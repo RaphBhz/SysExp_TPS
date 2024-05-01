@@ -39,7 +39,6 @@ int main(int argc, char * argv[])
             break;
         }
         ecrire(fd2, s);
-        ecrire(fd2,"\n");
         free(s);
     }
 

@@ -33,7 +33,7 @@ int main(int argc, char * argv[])
         exit(1);
     }
 
-	printf("La première ligne : <%s>\n", s);
+	printf("La première ligne : %s", s);
 	
 	/* Libération de la mémoire allouée et du fichier ouvert dans gestionFichiers */
 	close(fd);

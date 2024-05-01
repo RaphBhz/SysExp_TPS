@@ -21,7 +21,7 @@ int main()
 
 	s = litLigne(fd);
 	
-	printf("La première ligne : <%s>\n", s);
+	printf("La première ligne : %s", s);
 	
     if (s == NULL)
     {

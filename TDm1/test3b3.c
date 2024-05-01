@@ -15,7 +15,6 @@ int main()
         /* Tapez CTRL+C pour arrêter. */
         s = litLigne(0);	
         ecrire(1, s);
-        ecrire(1, "\n");
 
         if (s == NULL)
         {

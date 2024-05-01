@@ -42,7 +42,6 @@ char* litLigne(int fd) {
 	const int TAILLEBUF = 1000000;
 	int nbr, i;
 	char* s;
-	char c[1];
 	char* buffer = malloc(sizeof(char) * TAILLEBUF);
 	if (buffer == NULL)
 	{
@@ -52,18 +51,16 @@ char* litLigne(int fd) {
 
 	for (nbr = 0; nbr < TAILLEBUF; ++nbr)
 	{
-		if (read(fd, c, 1) != 1) 
+		if (read(fd, buffer+nbr, 1) != 1) 
 		{
 			free(buffer);
 			return NULL;
 		}
 
-		if (*c == '\n')
+		if (buffer[nbr] == '\n')
 		{
 			break;
 		}
-
-		buffer[nbr] = *c;
 	}
 
 	if (nbr >= TAILLEBUF - 1)
@@ -72,18 +69,17 @@ char* litLigne(int fd) {
 		return NULL;
 	}
 
-	s = malloc(sizeof(char) * (nbr));
+	s = malloc(sizeof(char) * (nbr+1));
 	if (s == NULL)
 	{
 		free(buffer);
 		return NULL;
 	}
 
-	for (i = 0; i < nbr; ++i)
+	for (i = 0; i <= nbr; ++i)
 	{
 		s[i] = buffer[i];
 	}
-	s[nbr] = '\0';
 	free(buffer);
 
 	return s;
