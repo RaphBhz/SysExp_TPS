@@ -12,12 +12,14 @@ int main(int argc, char * argv[])
 	char * s;
 	int fd, cpt;
 
+    /* On vérifie que l'utilisateur a bien entré un unique argument */
     if (argc != 2)
     {
         printf("Usage: %s <fichier>\n", argv[0]);
         exit(1);
     }
 
+    /* Ouverture du fichier passé en argument. */
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
@@ -25,6 +27,7 @@ int main(int argc, char * argv[])
 		exit(1);
 	}
 
+    /* Lecture de toutes les lignes du fichier et incrémentation du compteur jusqu'à ce que l'on n'ait plus rien à lire. */
     cpt = 0;
     while(1)
     {

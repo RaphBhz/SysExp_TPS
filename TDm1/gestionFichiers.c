@@ -39,6 +39,7 @@ char* litDixCaracteres(int fd)
 }
 
 char* litLigne(int fd) {
+	/* Taille limite de lecture pour éviter de boucler à l'infini */
 	const int TAILLEBUF = 1000000;
 	int nbr, i;
 	char* s;
@@ -51,18 +52,21 @@ char* litLigne(int fd) {
 
 	for (nbr = 0; nbr < TAILLEBUF; ++nbr)
 	{
+		/* On lit la suite du fichier du descrpiteur à l'adresse mémoire du début du buffer + le nombre de char lus. */
 		if (read(fd, buffer+nbr, 1) != 1) 
 		{
 			free(buffer);
 			return NULL;
 		}
 
+		/* On s'arrête dès que l'on croise un retour à la ligne. */
 		if (buffer[nbr] == '\n')
 		{
 			break;
 		}
 	}
 
+	/* Si on est arrivé à cette valeur, la boucle s'est arrêtée car nous avons rempli le buffer, on ne sait donc pas si la ligne a été entièrement lue. */
 	if (nbr >= TAILLEBUF - 1)
 	{	
 		free(buffer);
@@ -76,6 +80,7 @@ char* litLigne(int fd) {
 		return NULL;
 	}
 
+	/* On copie le buffer dans la string */
 	for (i = 0; i <= nbr; ++i)
 	{
 		s[i] = buffer[i];
@@ -89,6 +94,7 @@ void ecrire(int fd, char* s)
 {
 	int rv;
 	int taille = strlen(s);
+	/* On écrit la string dans le fichier */
 	rv = write(fd, s, taille);
 	if (rv < 0)
 	{

@@ -12,6 +12,7 @@ int main()
 	char * s;
 	int fd;
 
+	/* Ouverture du fichier test */
 	fd = open("fichierTest.txt", O_RDONLY);
 	if (fd < 0)
 	{
@@ -19,8 +20,8 @@ int main()
 		exit(1);
 	}
 
+	/* Test de litLigne */
 	s = litLigne(fd);
-	
 	printf("La première ligne : %s", s);
 	
     if (s == NULL)

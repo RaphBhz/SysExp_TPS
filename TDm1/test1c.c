@@ -12,6 +12,7 @@ int main()
 	char * s;
 	int fd;
 
+	/* Ouverture du fichier test */
 	fd = open("fichierTest.txt", O_RDONLY);
 	if (fd < 0)
 	{
@@ -20,10 +21,7 @@ int main()
 	}
 
 	s = litDixCaracteres(fd);
-	
 	printf("Les dix premiers caractères: <%s>\n", s);
-
-	/* à compléter */
 	
 	/* Libération de la mémoire allouée et du fichier ouvert dans gestionFichiers */
 	close(fd);

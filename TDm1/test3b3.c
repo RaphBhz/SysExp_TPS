@@ -10,9 +10,11 @@
 int main()
 {
     char* s;
-    
+
+    /* On lit en continu les entrées de la console et on les réécris dans la console. */    
+    /* Tapez CTRL+C pour arrêter. */
     while(1) {
-        /* Tapez CTRL+C pour arrêter. */
+        /* Le paramètre 0 permet de lire directement les entrées de la console */
         s = litLigne(0);	
         ecrire(1, s);
 
