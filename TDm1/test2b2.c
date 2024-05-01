@@ -7,23 +7,33 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-int main()
+int main(int argc, char * argv[])
 {
 	char * s;
 	int fd;
 
-	fd = open("fichierTest.txt", O_RDONLY);
+    if (argc != 2)
+    {
+        printf("Usage: %s <fichier>\n", argv[0]);
+        exit(1);
+    }
+
+	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Erreur : Ouverture fichier test");
 		exit(1);
 	}
 
-	s = litDixCaracteres(fd);
+	s = litLigne(fd);
 	
-	printf("Les dix premiers caractères: <%s>\n", s);
+    if (s == NULL)
+    {
+        perror("Erreur : lecture du fichier\n");
+        exit(1);
+    }
 
-	/* à compléter */
+	printf("La première ligne : <%s>\n", s);
 	
 	/* Libération de la mémoire allouée et du fichier ouvert dans gestionFichiers */
 	close(fd);

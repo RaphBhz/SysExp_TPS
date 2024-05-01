@@ -10,23 +10,19 @@
 int main()
 {
 	char * s;
-	int fd;
 
-	fd = open("fichierTest.txt", O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Erreur : Ouverture fichier test");
-		exit(1);
-	}
-
-	s = litDixCaracteres(fd);
+    /* Le paramètre 0 permet de lire directement les entrées de la console */
+	s = litLigne(0);
 	
-	printf("Les dix premiers caractères: <%s>\n", s);
-
-	/* à compléter */
+	printf("La première ligne : <%s>\n", s);
 	
+    if (s == NULL)
+    {
+        perror("Erreur : lecture du fichier\n");
+        exit(1);
+    }
+
 	/* Libération de la mémoire allouée et du fichier ouvert dans gestionFichiers */
-	close(fd);
 	free(s);
 
 	return 0;
