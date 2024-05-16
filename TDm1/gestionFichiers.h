@@ -1,6 +1,9 @@
 #ifndef _GESTION_FICHIERS_H
 #define _GESTION_FICHIERS_H
 
+/* Taille limite de lecture pour éviter de boucler à l'infini */
+#define TAILLEBUF 8191
+
 /*
     @brief Lit dix caractères du fichier dont le descripteur est fd.
     @param  fd Le descripteur du fichier à lire.

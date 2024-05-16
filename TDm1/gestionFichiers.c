@@ -39,8 +39,6 @@ char* litDixCaracteres(int fd)
 }
 
 char* litLigne(int fd) {
-	/* Taille limite de lecture pour éviter de boucler à l'infini */
-	const int TAILLEBUF = 1000000;
 	int nbr, i;
 	char* s;
 	char* buffer = malloc(sizeof(char) * TAILLEBUF);
@@ -55,6 +53,8 @@ char* litLigne(int fd) {
 		/* On lit la suite du fichier du descrpiteur à l'adresse mémoire du début du buffer + le nombre de char lus. */
 		if (read(fd, buffer+nbr, 1) != 1) 
 		{
+			if (nbr != 0) break;
+
 			free(buffer);
 			return NULL;
 		}
