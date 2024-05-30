@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-W -Wall -ansi -pedantic
-EXEC=serveurs
+EXEC=serveurs vault
 OBJ=$(EXEC:=.o)
-SRC=$(OBJ:.o=.c)
+SRC=$(EXEC:=.c)
 DEPS=../TDm1/gestionFichiers gestionServeurs
 
 all: $(EXEC)

@@ -1,11 +1,6 @@
-#include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <errno.h>
 #include <stdlib.h>
-#include <limits.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include "gestionServeurs.h"
 
