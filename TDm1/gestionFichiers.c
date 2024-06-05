@@ -66,12 +66,14 @@ char* litLigne(int fd) {
 		}
 	}
 
-	/* Si on est arrivé à cette valeur, la boucle s'est arrêtée car nous avons rempli le buffer, on ne sait donc pas si la ligne a été entièrement lue. */
+	/* Si on est arrivé à cette valeur, la boucle s'est arrêtée car nous avons rempli le buffer, on ne sait donc pas si la ligne a été entièrement lue.
+		Commenté car on veut quand même récupérer la valeur dans le TDm4
 	if (nbr >= TAILLEBUF - 1)
 	{	
 		free(buffer);
 		return NULL;
 	}
+	*/
 
 	s = malloc(sizeof(char) * (nbr+1));
 	if (s == NULL)
